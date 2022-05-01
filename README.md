@@ -4,8 +4,10 @@
 To design a half subtractor and full subtractor circuit and verify its truth table in Quartus using Verilog programming.
 
 ## Equipments Required:
-## Hardware – PCs, Cyclone II , USB flasher
-## Software – Quartus prime
+Hardware – PCs, Cyclone II , USB flasher
+
+Software – Quartus prime
+
 ## Theory
 Subtractor circuits take two binary numbers as input and subtract one binary number input from the other binary number input. Similar to adders, it gives out two outputs, difference and borrow (carry-in the case of Adder). There are two types of subtractors.
 
@@ -27,28 +29,60 @@ Diff = A ⊕ B ⊕ Bin B = A'Bin + A'B + BBin
 
 ## Procedure
 
-
-
-Write the detailed procedure here 
-
+1. Use module projname(input,output) to start the Verilog programmming.
+2. Assign inputs and outputs using the word input and output respectively.
+3. Use defined keywords like wire,assign and required logic gates to represent the boolean expression.
+4. Use each output to represnt onre for differnce and the other for borrow.
+5. End the verilog program using keyword endmodule.
 
 ## Program:
 /*
 Program to design a half subtractor and full subtractor circuit and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: Keerthika N
+RegisterNumber: 212221230049
 */
 
+## HALF SUBTRACTOR
+```
+module HalfSubtractor(A,B,Diff,Borrow);
+input A,B;
+output Diff,Borrow;
+wire x;
+xor (Diff, A,B);
+not(x,A);
+and(Borrow,x,B);
+endmodule
+```
+## FULL SUBTRACTOR
+```
+module FullSubtractor(A,B,C,Diff,Borrow);
+input A,B,C;
+output Diff,Borrow;
+wire p;
+assign Diff = ((A^B)^C);
+not(p,A);
+assign Borrow = ((p&B)|(p&C)|(B&C));
+endmodule
+```
+
 ## Output:
+## Half Subtractor:
+![hs](./hs.png)
+### Truthtable
+![tt](./tt.png)
+###  RTL realization
+![rtl](./rtl.png)
+### Timing diagram 
+![td](./td.png)
 
-## Truthtable
-
-
-
-##  RTL realization
-
-
-## Timing diagram 
+## Full Suubtractor:
+![fs](./fs.png)
+### Truthtable
+![ftt](./ftt.png)
+### RTL realization
+![frtl](./frtl.png)
+### Timing diagram
+![ftd](./ftd.png)
 
 ## Result:
 Thus the half subtractor and full subtractor circuits are designed and the truth tables is verified using quartus software.
